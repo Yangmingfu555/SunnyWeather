@@ -15,20 +15,19 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import org.litepal.LitePal;
-import org.litepal.crud.LitePalSupport;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import db.City;
-import db.County;
-import db.Province;
+import com.sunnyweather.android.db.City;
+import com.sunnyweather.android.db.County;
+import com.sunnyweather.android.db.Province;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 import util.HttpUtil;
-import util.Utility;
+import com.sunnyweather.android.util.Utility;
 
 /**
  * Package: com.sunnyweather.android
