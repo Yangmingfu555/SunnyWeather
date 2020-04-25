@@ -1,4 +1,4 @@
-package db;
+package com.sunnyweather.android.db;
 
 import org.litepal.crud.LitePalSupport;
 
