@@ -2,15 +2,15 @@ package com.sunnyweather.android.util;
 
 import android.text.TextUtils;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import com.google.gson.Gson;
 import com.sunnyweather.android.db.City;
 import com.sunnyweather.android.db.County;
 import com.sunnyweather.android.db.Province;
 import com.sunnyweather.android.gson.Weather;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Package: util
