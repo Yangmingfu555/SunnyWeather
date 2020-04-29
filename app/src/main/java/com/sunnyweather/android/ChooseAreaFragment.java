@@ -2,7 +2,9 @@ package com.sunnyweather.android;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -114,11 +116,24 @@ public class ChooseAreaFragment extends Fragment {
                     selectedCity = cityList.get(position);
                     queryCounties();
                 }else if (currentLevel == LEVEL_COUNTY){
-                    String weatherId = countyList.get(position).getWeatherId();
-                    Intent intent = new Intent(getActivity(),WeatherActivity.class);
-                    intent.putExtra("weather_id",weatherId);
+                    String weather_Id = countyList.get(position).getWeatherId();
+                    if (getActivity() instanceof MainActivity){
+                    Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                    intent.putExtra("weather_id",weather_Id);
                     startActivity(intent);
                     getActivity().finish();
+                    }else if (getActivity() instanceof MainActivity){
+                        WeatherActivity activity = (WeatherActivity) getActivity();
+                        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences
+                                (getContext()).edit();
+                        editor.putString("weather_id", weather_Id);
+                        editor.apply();
+
+                        activity.drawerLayout.closeDrawers();
+                        activity.swipeRefresh.setRefreshing(true);
+                        activity.requestWeather(weather_Id);
+                    }
+
                 }
             }
         });
@@ -151,7 +166,7 @@ public class ChooseAreaFragment extends Fragment {
             listView.setSelection(0);
             currentLevel = LEVEL_PROVINCE;
         }else {
-            String address = "http://guolin.tech/api/china/";
+            String address = "http://guolin.tech/api/china";
             queryFromServer(address, "province");
         }
 
