@@ -58,10 +58,10 @@ public class Utility {
                     city.setProvinceId(provinceId);
                     city.save();
                 }
-                return true;
+
             } catch (JSONException e) {
                 e.printStackTrace();
-            }
+            }return true;
         }
         return false;
     }
@@ -81,10 +81,10 @@ public class Utility {
                     county.setCityId(cityId);
                     county.save();
                 }
-                return true;
+
             } catch (JSONException e) {
                 e.printStackTrace();
-            }
+            }return true;
         }
         return false;
     }
