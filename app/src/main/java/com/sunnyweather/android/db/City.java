@@ -70,4 +70,3 @@ public class City extends LitePalSupport {
         this.text = text;
     }
 }
-
